@@ -3,7 +3,7 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
-Server/appsettings.Development.json
+appsettings.Development.json
 appsettings.json
 Migrations/
 
