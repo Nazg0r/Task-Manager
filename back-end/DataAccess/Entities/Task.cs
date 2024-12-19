@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Data.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Entities
 {
 	[Table("tasks")]
-	public class Task
+	public class Task : BaseEntity
 	{
-		[Column("id")] public int Id { get; set; }
 		[Column("title")] public string Title { get; set; }
 		[Column("description")] public string Description { get; set; }
 		[Column("priority")] public string Priority { get; set; }

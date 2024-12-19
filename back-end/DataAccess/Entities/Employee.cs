@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Data.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Entities
 {
 	[Table("employees")]
-	public class Employee
+	public class Employee : BaseEntity
 	{
-		[Column("id")] public int Id { get; set; }
 		[ForeignKey("user_id")] public int UserId { get; set; }
 		[Column("workload")] public string Workload { get; set; }
 
