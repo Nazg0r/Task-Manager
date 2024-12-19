@@ -2,7 +2,7 @@
 
 namespace DataAccess.Entities
 {
-	[Table("users")]
+	[Table("tasks")]
 	public class Task
 	{
 		[Column("id")] public int Id { get; set; }
