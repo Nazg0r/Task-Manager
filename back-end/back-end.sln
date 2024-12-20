@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{EE3A0382-C5F4-4C4D-9795-76C340F62DA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{AEBAC32C-EF25-468B-8319-6B348B73757C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{EE3A0382-C5F4-4C4D-9795-76C340F62DA5}.Release|x64.Build.0 = Release|Any CPU
 		{EE3A0382-C5F4-4C4D-9795-76C340F62DA5}.Release|x86.ActiveCfg = Release|Any CPU
 		{EE3A0382-C5F4-4C4D-9795-76C340F62DA5}.Release|x86.Build.0 = Release|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Debug|x64.Build.0 = Debug|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Debug|x86.Build.0 = Debug|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Release|x64.ActiveCfg = Release|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Release|x64.Build.0 = Release|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Release|x86.ActiveCfg = Release|Any CPU
+		{AEBAC32C-EF25-468B-8319-6B348B73757C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
