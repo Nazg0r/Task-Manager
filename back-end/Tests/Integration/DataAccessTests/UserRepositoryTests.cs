@@ -1,10 +1,9 @@
 ﻿using DataAccess.Data;
 using DataAccess.Entities;
-using DataAccess.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System.Xml.Linq;
+using Tests.Integration.Factories;
 
-namespace Tests.Integration
+namespace Tests.Integration.DataAccessTests
 {
 	public class UserRepositoryTests : IClassFixture<UserFactory>
 	{
@@ -16,17 +15,17 @@ namespace Tests.Integration
 		[InlineData("Oleksandr", "Shevchenko")]
 		[InlineData("Dmytro", "Kovalchuk")]
 		[InlineData("Andriy", "Grytsenko")]
-		public async System.Threading.Tasks.Task GetByFullNameAsync(string name, string surname)
+		public async System.Threading.Tasks.Task GetByFullNameAsync_ReturnCorrectUser(string name, string surname)
 		{
 			//Arrange
 
 			//Act
-			User? DbUser = await _unitOfWork.UserRepository.GetByFullNameAsync(name, surname);
+			User? dbUser = await _unitOfWork.UserRepository.GetByFullNameAsync(name, surname);
 
 			//Assert
-			Assert.NotNull(DbUser);
-			Assert.Equal(name, DbUser.Name);
-			Assert.Equal(surname, DbUser.Surname);
+			Assert.NotNull(dbUser);
+			Assert.Equal(name, dbUser.Name);
+			Assert.Equal(surname, dbUser.Surname);
 		}
 
 		[Theory]
@@ -36,8 +35,8 @@ namespace Tests.Integration
 		public async System.Threading.Tasks.Task AddAsync_CreateNewUser(string name, string surname)
 		{
 			//Arrange
-			User user = new User() 
-			{ 
+			User user = new User()
+			{
 				Name = name,
 				Surname = surname
 			};
@@ -45,26 +44,26 @@ namespace Tests.Integration
 			//Act
 			await _unitOfWork.UserRepository.AddAsync(user);
 			await _unitOfWork.SaveAsync();
-			User? DbUser = await _unitOfWork.UserRepository.GetByFullNameAsync(user.Name, user.Surname);
+			User? dbUser = await _unitOfWork.UserRepository.GetByFullNameAsync(user.Name, user.Surname);
 
 			//Assert
-			Assert.NotNull(DbUser);
-			Assert.Equal(name, DbUser.Name);
-			Assert.Equal(surname, DbUser.Surname);
+			Assert.NotNull(dbUser);
+			Assert.Equal(name, dbUser.Name);
+			Assert.Equal(surname, dbUser.Surname);
 		}
 
 		[Theory]
 		[InlineData("Volodymyr", "Tkachenko", "Tyler", "Durden")]
 		[InlineData("Kateryna", "Moroz", "Fedir", "Denchyk")]
-		public async System.Threading.Tasks.Task Update_ChangeUserName(string oldName, string oldSurname, string newName, string newSurname)
+		public async System.Threading.Tasks.Task Update_ChangeUserFields(string oldName, string oldSurname, string newName, string newSurname)
 		{
 			//Arrange
-			User? DbUser = await _unitOfWork.UserRepository.GetByFullNameAsync(oldName, oldSurname);
-			DbUser.Name = newName;
-			DbUser.Surname = newSurname;
+			User? dbUser = await _unitOfWork.UserRepository.GetByFullNameAsync(oldName, oldSurname);
+			dbUser.Name = newName;
+			dbUser.Surname = newSurname;
 
 			//Act
-			_unitOfWork.UserRepository.Update(DbUser);
+			_unitOfWork.UserRepository.Update(dbUser);
 			await _unitOfWork.SaveAsync();
 			User? updatedUser = await _unitOfWork.UserRepository.GetByFullNameAsync(newName, newSurname);
 			User? oldUser = await _unitOfWork.UserRepository.GetByFullNameAsync(oldName, oldSurname);
