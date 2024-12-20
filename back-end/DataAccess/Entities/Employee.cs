@@ -6,11 +6,11 @@ namespace DataAccess.Entities
 	[Table("employees")]
 	public class Employee : BaseEntity
 	{
-		[ForeignKey("user_id")] public int UserId { get; set; }
+		[ForeignKey("User")][Column("user_id")] public int UserId { get; set; }
 		[Column("workload")] public string Workload { get; set; }
 
-		public User User { get; set; }
-		public IEnumerable<Task> Tasks { get; set; }
+		public virtual User User { get; set; }
+		public virtual IEnumerable<Task> Tasks { get; set; }
 
 		public override bool Equals(object? obj)
 		{

@@ -7,8 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(opt =>
 {
-	opt.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection"));
+	opt.UseLazyLoadingProxies()
+	.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection"));
 }, ServiceLifetime.Singleton);
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();

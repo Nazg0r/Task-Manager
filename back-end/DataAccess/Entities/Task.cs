@@ -12,7 +12,7 @@ namespace DataAccess.Entities
 		[Column("state")] public string State { get; set; }
 		[Column("time_to_finish")] public DateTime TimeToFinish { get; set; }
 		[Column("creation_date")] public DateTime CreationDate { get; set; }
-		public IEnumerable<Employee> Employees { get; set; }
+		public virtual IEnumerable<Employee> Employees { get; set; }
 
 		public override bool Equals(object? obj)
 		{
