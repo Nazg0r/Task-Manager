@@ -13,5 +13,23 @@ namespace DataAccess.Entities
 		[Column("time_to_finish")] public DateTime TimeToFinish { get; set; }
 		[Column("creation_date")] public DateTime CreationDate { get; set; }
 		public IEnumerable<Employee> Employees { get; set; }
+
+		public override bool Equals(object? obj)
+		{
+			return obj is Task task &&
+			task.Id == Id &&
+			task.Title == Title &&
+			task.Description == Description &&
+			task.Priority == Priority &&
+			task.State == State &&
+			task.TimeToFinish.Equals(TimeToFinish) &&
+			task.CreationDate.Equals(CreationDate) &&
+			task.Employees.Equals(Employees);
+		}
+
+		public override int GetHashCode()
+		{
+			return HashCode.Combine(Id);
+		}
 	}
 }

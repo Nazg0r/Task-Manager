@@ -11,5 +11,20 @@ namespace DataAccess.Entities
 
 		public User User { get; set; }
 		public IEnumerable<Task> Tasks { get; set; }
+
+		public override bool Equals(object? obj)
+		{
+			return obj is Employee emploee &&
+			emploee.Id == Id &&
+			emploee.Workload == Workload &&
+			emploee.UserId == UserId &&
+			emploee.User.Equals(User) &&
+			emploee.Tasks.Equals(Tasks);
+		}
+
+		public override int GetHashCode()
+		{
+			return HashCode.Combine(Id);
+		}
 	}
 }
