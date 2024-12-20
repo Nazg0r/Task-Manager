@@ -10,7 +10,7 @@ namespace DataAccess.Entities
 		[Column("workload")] public string Workload { get; set; }
 
 		public virtual User User { get; set; }
-		public virtual IEnumerable<Task> Tasks { get; set; }
+		public virtual ICollection<Task> Tasks { get; set; }
 
 		public override bool Equals(object? obj)
 		{

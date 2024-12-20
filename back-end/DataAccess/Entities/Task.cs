@@ -10,9 +10,9 @@ namespace DataAccess.Entities
 		[Column("description")] public string Description { get; set; }
 		[Column("priority")] public string Priority { get; set; }
 		[Column("state")] public string State { get; set; }
-		[Column("time_to_finish")] public DateTime TimeToFinish { get; set; }
-		[Column("creation_date")] public DateTime CreationDate { get; set; }
-		public virtual IEnumerable<Employee> Employees { get; set; }
+		[Column("time_to_finish")] public string TimeToFinish { get; set; }
+		[Column("creation_date")] public string CreationDate { get; set; }
+		public virtual ICollection<Employee> Employees { get; set; }
 
 		public override bool Equals(object? obj)
 		{
@@ -22,8 +22,8 @@ namespace DataAccess.Entities
 			task.Description == Description &&
 			task.Priority == Priority &&
 			task.State == State &&
-			task.TimeToFinish.Equals(TimeToFinish) &&
-			task.CreationDate.Equals(CreationDate) &&
+			task.TimeToFinish == TimeToFinish &&
+			task.CreationDate == CreationDate &&
 			task.Employees.Equals(Employees);
 		}
 
