@@ -1,15 +1,10 @@
-using DataAccess.Data;
-using Microsoft.EntityFrameworkCore;
+using Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var appConfig = builder.Configuration;
 
-builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-	opt.UseLazyLoadingProxies()
-	.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection"));
-}, ServiceLifetime.Singleton);
+builder.Services.AddServices(appConfig);
 
 var app = builder.Build();
 
