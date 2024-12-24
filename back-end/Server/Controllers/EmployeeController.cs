@@ -55,7 +55,7 @@ namespace Server.Controllers
 			ErrorOr<Success> result = await employeeService.DeleteEmplyeeAsync(id);
 
 			return result.Match(
-				employee => Results.Ok(employee),
+				_ => Results.NoContent(),
 				errors => Results.BadRequest(errors.First())
 			);
 		}

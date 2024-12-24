@@ -25,6 +25,7 @@ namespace BusinessLogic.Mapper
 		{
 			return new TaskModel
 			{
+				Id = source.Id,
 				Title = source.Title,
 				Description = source.Description,
 				Priority = source.Priority,

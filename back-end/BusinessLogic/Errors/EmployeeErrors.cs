@@ -5,7 +5,7 @@ namespace BusinessLogic.Errors
 	public static class EmployeeErrors
 	{
 		public static Error EmployeesNotFound =>
-			Error.Custom(ErrorTypes.NotFound, "Employees.NotFound", "Failed to get all employees.");
+			Error.Custom(ErrorTypes.NotFound, "Employees.NotFound", "Failed to get employees.");
 
 		public static Error EmployeeNotFound =>
 			Error.Custom(ErrorTypes.NotFound, "Employee.NotFound", $"Failed to get employee.");
