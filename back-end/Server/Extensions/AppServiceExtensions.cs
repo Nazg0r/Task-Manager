@@ -25,6 +25,8 @@ namespace Server.Extensions
 			services.AddSingleton<IUnitOfWork, UnitOfWork>();
 
 			services.AddSingleton<IEmployeeService, EmployeeService>();
+			services.AddSingleton<ITaskService, TaskService>();
+
 			return services;
 		}
 	}
