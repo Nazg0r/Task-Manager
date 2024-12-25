@@ -1,0 +1,23 @@
+<header>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="logo image">
+    </div>
+    <div class="tasks-state-categories">
+      <ul class="tasks-state-categories__list">
+        <li class="tasks-state-categories__list__elem"><a href="#">All Tasks</a></li>
+        <li class="tasks-state-categories__list__elem"><a href="#">Pending</a></li>
+        <li class="tasks-state-categories__list__elem"><a href="#">In Progress</a></li>
+        <li class="tasks-state-categories__list__elem"><a href="#">Finished</a></li>
+      </ul>
+    </div>
+    <div class="authentication">
+      <a href="#">Log in</a>
+      <a href="#">Sign in</a>
+    </div>
+    <div class="burger-menu" (click)="onBurgerMenuOpen()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+</header>
+<app-burger-menu [isActive]="burgerMenu"></app-burger-menu>
