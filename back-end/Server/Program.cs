@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddServices(appConfig);
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().
+	WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
 app.MapControllers();
 

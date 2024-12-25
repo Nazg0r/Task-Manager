@@ -27,6 +27,8 @@ namespace Server.Extensions
 			services.AddSingleton<IEmployeeService, EmployeeService>();
 			services.AddSingleton<ITaskService, TaskService>();
 
+			services.AddCors();
+
 			return services;
 		}
 	}
