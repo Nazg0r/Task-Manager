@@ -1,0 +1,54 @@
+.filter__container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+.filter__label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.filter-input {
+  display: flex;
+  gap: 0.8rem;
+}
+
+#filter-title-key-word {
+  border: none;
+  background: none;
+  border-bottom: 1px solid #777;
+  outline: none;
+  font-size: 1rem;
+}
+
+#filter-priority, #filter-employees, #filter-deadline {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  border-bottom: 1px solid #777;
+  outline: none;
+}
+
+.filter-submit-btn {
+  padding: 0.5rem 1.2rem;
+  background: var(--card-border-color);
+  color: #000000;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  transition: 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.14);
+
+  &:hover, &:active {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}

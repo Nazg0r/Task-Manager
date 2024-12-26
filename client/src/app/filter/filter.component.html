@@ -1,0 +1,49 @@
+<div class="filter__container">
+<!--  <p class="filter__label">Filters:</p>-->
+  <input
+    id="filter-title-key-word"
+    name="titleKeyWord"
+    type="text"
+    placeholder="Title Key Word"
+    [(ngModel)] = "keyword"
+  >
+
+  <div class="filter-input">
+    <label for="filter-priority">Priority:</label>
+    <select
+      id="filter-priority"
+      name="priority"
+      [(ngModel)]="priority">
+      <option value="Any">Any</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </div>
+
+  <div class="filter-input">
+    <label for="filter-deadline">Deadline:</label>
+    <input
+      id="filter-deadline"
+      type="date"
+      name="timeToFinish"
+      [(ngModel)]="deadline"
+      (change)="onSetDeadline()">
+  </div>
+
+  <div class="filter-input">
+    <label for="filter-employees">Executors:</label>
+    <select
+      id="filter-employees"
+      (click)="onDropExecutors()">
+      <option (click)="onSelectExecutor($event)" value="Any">Any</option>
+      @for (employee of employees; track employee.id) {
+        <option (click)="onSelectExecutor($event)" >{{employee.name}} {{employee.surname}}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-submit">
+    <button type="submit" class="filter-submit-btn" (click)="onFilterSubmit()">Filter</button>
+  </div>
+</div>
