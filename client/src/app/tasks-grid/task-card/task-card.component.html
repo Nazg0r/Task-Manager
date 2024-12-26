@@ -1,0 +1,117 @@
+<div class="task-card__container">
+  <div class="task-card__top">
+    <i class="fa-solid fa-pen-to-square task-card__edit" (click)="onEditMode()"></i>
+    <p class="task-card__creation-date">{{creationDate()}}</p>
+  </div>
+  <h2 class="task-card__title" [class.on-edit-mode]="isEditMode()">{{currTitle()}}</h2>
+
+  <input
+    type="text"
+    class="task-card__title title-input input"
+    name="title"
+    [(ngModel)]="currTitle"
+    [class.on-edit-mode]="!isEditMode()">
+
+  <div class="task-card__inner-line"></div>
+  <div class="task-card__description">
+    <strong>Description: </strong>
+    <p class="task-card__description__value" [class.on-edit-mode]="isEditMode()">{{currDescription()}}</p>
+  </div>
+
+  <div class="description-input-container" [class.on-edit-mode]="!isEditMode()">
+  <textarea
+    class="task-card__description description-input input"
+    name="description"
+    [(ngModel)]="currDescription">
+  </textarea>
+  </div>
+
+  <div class="task-card__inner-line"></div>
+  <div class="task-card__priority">
+    <strong>Priority:</strong>
+    <div class="ask-card__priority-container" [class.on-edit-mode]="isEditMode()">
+      <div class="task-card__priority__value" [style.color]="priorityColor()">
+        <div class="task-card__priority__value__line" [style.border-color]="priorityColor()">
+          <div class="task-card__priority__value__line-fill"
+               [style.background-color]="priorityColor()"
+               [style.width]="priorityLine()"
+          ></div>
+        </div>{{currPriority()}}
+      </div>
+    </div>
+    <div [class.on-edit-mode]="!isEditMode()">
+      <select
+        class="task-card__priority__value priority-input"
+        name="priority"
+        [(ngModel)]="currPriority"
+        (change)="onUpdatePriority()">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div class="task-card__state">
+    <strong>State:</strong>
+    <div class="task-card__state__value" [class.on-edit-mode]="isEditMode()">{{currState()}}</div>
+
+    <div [class.on-edit-mode]="!isEditMode()">
+      <select
+        class="task-card__state__value state-input"
+        name="state"
+        [(ngModel)]="currState">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Finished">Finished</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="task-card__deadline">
+    <strong>Deadline:</strong>
+    <div class="task-card__deadline__value" [class.on-edit-mode]="isEditMode()">{{currDeadline()}}</div>
+
+    <div [class.on-edit-mode]="!isEditMode()">
+      <input
+        class="task-card__deadline__value deadline-input"
+        type="date"
+        name="timeToFinish"
+        [(ngModel)]="currDeadline"
+        (change)="onUpdateDeadline()">
+    </div>
+  </div>
+
+
+  <div class="task-card__inner-line"></div>
+  <div class="task-card__employees">
+    <strong>Executors:</strong>
+    <div class="task-card__employees-list">
+      @for (executor of currExecutors(); track executor.id) {
+        <app-executor
+          [name]="executor.name"
+          [surname]="executor.surname"
+        ></app-executor>
+      }
+    </div>
+
+    <div class="employee-input__container" [class.on-edit-mode]="!isEditMode()">
+      <select
+        class="employee-input"
+        (click)="onSelectNewExecutor()">
+        @for (employee of employees; track employee.id) {
+          <option (click)="onAddExecutor($event)">{{employee.name}} {{employee.surname}}</option>
+        }
+      </select>
+      <div class="employee-input__btn">Add new +</div>
+    </div>
+  </div>
+
+  <div class="task-card__apply-changes" [class.on-edit-mode]="!isEditMode()" (click)="onApplyChanges()">
+    <button type="submit" class="task-card__apply-changes_btn" >Apply Changes</button>
+  </div>
+
+</div>

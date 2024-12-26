@@ -6,7 +6,7 @@ import {TasksGridComponent} from "./tasks-grid/tasks-grid.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, TasksGridComponent],
+  imports: [RouterOutlet, TasksGridComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

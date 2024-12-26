@@ -1,0 +1,15 @@
+
+<div class="tasks-grid__container">
+    @for (task of tasks; track task.id) {
+        <app-task-card
+                [id]="task.id"
+                [creationFullDate]="task.creationDate"
+                [title]="task.title"
+                [description]="task.description"
+                [priority]="task.priority"
+                [state]="task.state"
+                [deadline]="task.timeToFinish"
+                [executors]="task.employees"
+        ></app-task-card>
+    }
+</div>

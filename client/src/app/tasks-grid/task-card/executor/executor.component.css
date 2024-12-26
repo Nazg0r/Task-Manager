@@ -1,0 +1,19 @@
+.executor-container {
+  display: inline-block;
+  padding: 2px;
+  font-size: 0.75rem;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+.executor-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.executor-circle{
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
