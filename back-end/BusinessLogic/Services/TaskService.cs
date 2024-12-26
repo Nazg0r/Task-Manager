@@ -43,7 +43,7 @@ namespace BusinessLogic.Services
 				CreationDate = DateTime.Now.ToString()
 			};
 
-			var result = await AddNewContractors(newTask, taskDTO.EmployeeIds!);
+			var result = await SetNewContractors(newTask, taskDTO.EmployeeIds!);
 
 			await unitOfWork.TaskRepository.AddAsync(newTask);
 			await unitOfWork.SaveAsync();
@@ -61,7 +61,7 @@ namespace BusinessLogic.Services
 				return TaskErrors.TaskNotFound;
 
 			UpdateTaskFields(task, taskDTO);
-			var result = await AddNewContractors(task, taskDTO.EmployeeIds!);
+			var result = await SetNewContractors(task, taskDTO.EmployeeIds!);
 
 			await unitOfWork.SaveAsync();
 
@@ -99,12 +99,11 @@ namespace BusinessLogic.Services
 				task.TimeToFinish = taskDTO.TimeToFinish;
 		}
 
-		private async Task<ErrorOr<Success>> AddNewContractors(DataAccess.Entities.Task task, IEnumerable<int> employeeIds)
+		private async Task<ErrorOr<Success>> SetNewContractors(DataAccess.Entities.Task task, IEnumerable<int> employeeIds)
 		{
 			if (employeeIds is not null && employeeIds.Any())
 			{
-				if (task.Employees is null)
-					task.Employees = new List<Employee>();
+				task.Employees = new List<Employee>();
 
 				IEnumerable<Employee> contractors = await unitOfWork.EmployeeRepository.GetAllAsync();
 				contractors = contractors.Where(e => employeeIds.Contains(e.Id));
@@ -116,6 +115,14 @@ namespace BusinessLogic.Services
 				{
 					task.Employees.Add(contractor);
 					contractor.Tasks.Add(task);
+				}
+			}
+			else
+			{
+				foreach (var employee in task.Employees)
+				{
+					employee.Tasks.Remove(task);
+					task.Employees.Remove(employee);
 				}
 			}
 
