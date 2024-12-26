@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, WritableSignal} from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ExecutorService {
@@ -15,5 +15,14 @@ export class ExecutorService {
     }
 
     return color;
+  }
+
+  AddExecutorToList(allExecutors: any[], executorsList: WritableSignal<any>, fullExecutorName: string) {
+    const newExecutor = allExecutors.find((e: { name: string; surname: string; }) => {
+      const fullName = `${e.name} ${e.surname}`;
+      return fullName === fullExecutorName;
+    });
+
+    executorsList.set([...executorsList(), newExecutor]);
   }
 }

@@ -1,0 +1,4 @@
+<div class="new-task__container">
+  <button type="button" class="new-task__btn" (click)="onModalOpened()">Add New Task</button>
+</div>
+<app-new-task-modal [class.modal-active]="isModalOpen()" (closeModal)="onModalClosed()"></app-new-task-modal>

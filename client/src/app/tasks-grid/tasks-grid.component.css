@@ -3,5 +3,6 @@
   margin: 1rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  justify-items: center;
+  row-gap: 2rem;
 }

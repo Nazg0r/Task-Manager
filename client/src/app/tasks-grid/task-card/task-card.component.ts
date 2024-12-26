@@ -3,6 +3,7 @@ import {TaskService} from './task.service';
 import {ExecutorComponent} from "./executor/executor.component";
 import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {ExecutorService} from "./executor/executor.service";
 
 @Component({
   selector: 'app-task-card',
@@ -26,6 +27,7 @@ export class TaskCardComponent implements OnInit {
 
   http = inject(HttpClient);
   taskService = inject(TaskService);
+  executorService = inject(ExecutorService);
   isEditMode = signal(false);
   priorityColor = signal("black");
   priorityLine = signal("0%");
@@ -63,8 +65,6 @@ export class TaskCardComponent implements OnInit {
   onUpdateDeadline() {
     this.currDeadline.set(this.currDeadline().replace("-", "."));
     this.currDeadline.set(this.currDeadline().replace("-", "."));
-
-    console.log(this.currDeadline());
   }
 
   onSelectNewExecutor(): void {
@@ -84,13 +84,7 @@ export class TaskCardComponent implements OnInit {
   }
 
   onAddExecutor(event: any): void {
-    console.log(event.target.value);
-    const newExecutor = this.employees.find((e: { name: string; surname: string; }) => {
-      const fullName = `${e.name} ${e.surname}`;
-      return fullName === event.target.value
-    });
-
-    this.currExecutors.set([...this.currExecutors(), newExecutor]);
+    this.executorService.AddExecutorToList(this.employees, this.currExecutors, event.target.value);
   }
 
   onEditMode() {

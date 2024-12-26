@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
+  tasks = signal<any>([]);
+
   definePriorityColor(priority: string) {
     if (priority === 'Low') return 'green';
     if (priority === 'Medium') return 'orange';

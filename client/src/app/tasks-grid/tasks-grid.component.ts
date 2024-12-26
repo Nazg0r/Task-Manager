@@ -1,6 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {TaskCardComponent} from "./task-card/task-card.component";
 import {HttpClient} from "@angular/common/http";
+import {TaskService} from "./task-card/task.service";
 
 @Component({
   selector: 'app-tasks-grid',
@@ -13,11 +14,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class TasksGridComponent implements OnInit {
   http = inject(HttpClient);
-  tasks: any;
+  taskService = inject(TaskService);
 
   ngOnInit(): void {
     this.http.get('https://localhost:5001/api/task').subscribe({
-      next: (response) => {this.tasks = response;},
+      next: (response) => {this.taskService.tasks.set(response);},
       error: (err) => {console.log(err)}
       }
     )

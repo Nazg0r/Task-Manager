@@ -1,0 +1,25 @@
+.new-task__container {
+  position: fixed;
+  bottom: 4rem;
+  left: 4rem;
+}
+
+.new-task__btn {
+  padding: 1rem 2rem;
+  background: var(--main-btn-collor);
+  color: #000000;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  transition: 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+
+  &:hover, &:active {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.modal-active {
+  display: none;
+}

@@ -1,0 +1,93 @@
+<div class="modal-overlay">
+  <div class="new-task-modal">
+    <div class="new-task-modal__content">
+      <i class="fa-solid fa-xmark close-modal" (click)="onCloseModal()"></i>
+      <form class="new-task-modal__form">
+        <h2>Create New Task</h2>
+        <div class="new-task__input-container">
+          <input
+            id="new-task-title"
+            class="new-task__input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            [(ngModel)]="title">
+        </div>
+
+        <div class="new-task__input-container">
+          <textarea
+            name="description"
+            id="new-task-description"
+            class="new-task__input"
+            placeholder="Description"
+            [(ngModel)]="description">
+          </textarea>
+        </div>
+
+        <div class="new-task__input-container new-task__flex-input">
+          <label for="new-task-priority">Priority:</label>
+          <select
+            id="new-task-priority"
+            name="priority"
+            [(ngModel)]="priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <div class="new-task__input-container new-task__flex-input">
+          <label for="new-task-state">State</label>
+          <select
+            id="new-task-state"
+            name="state"
+            [(ngModel)]="state">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Finished">Finished</option>
+          </select>
+        </div>
+
+        <div class="new-task__input-container new-task__flex-input">
+          <label for="new-task-deadline">Deadline</label>
+          <input
+            id="new-task-deadline"
+            class="new-task__input"
+            type="date"
+            name="timeToFinish"
+            [(ngModel)]="deadline">
+        </div>
+
+        <div class="new-task__employee-input">
+          <div class="new-task__flex-input">
+            <label for="new-task-employees">Executors</label>
+            <div class="new-task-employees__container">
+              <select
+                id="new-task-employees"
+                (click)="onSelectExecutor()">
+                @for (employee of employees; track employee.id) {
+                  <option (click)="onAddExecutor($event)" >{{employee.name}} {{employee.surname}}</option>
+                }
+              </select>
+              <div class="employee-input__btn">Add new +</div>
+            </div>
+          </div>
+          <div class="new-task__selected-employees-list">
+            @for (executor of selectedExecutors(); track executor.id) {
+              <app-executor
+                [name]="executor.name"
+                [surname]="executor.surname"
+              ></app-executor>
+            }
+          </div>
+        </div>
+
+        <div class="new-task__submit">
+          <button class="new-task__submit-btn" type="submit" (click)="onSubmit()">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
