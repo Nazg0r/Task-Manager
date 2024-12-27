@@ -24,7 +24,8 @@ namespace BusinessLogic.Services
 				.FilterByPriority(filter.Priority)
 				.FilterByState(filter.State)
 				.FilterByTimeToFinish(filter.TimeToFinish)
-				.FilterByEmployee(filter.EmployerId);
+				.FilterByEmployee(filter.EmployerId)
+				.OrderByDescending(t => t.CreationDate);
 
 			IEnumerable<TaskModel> result = filteredTasks.Select(t => t.ToModel());
 
